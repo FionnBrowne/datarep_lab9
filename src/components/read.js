@@ -14,10 +14,10 @@ export class Read extends React.Component {
     };
 
     componentDidMount() {//component lifecycle hooks - when visiable to web api method will be exceuted
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')//asynchronous by using a promise
+        axios.get('http://localhost:4000/api/movies')//asynchronous by using a promise //now gets data from new api
             .then(
                 (response) => {
-                    this.setState({ movies: response.data.Search })//data coming back as from the response of the web server
+                    this.setState({ movies: response.data.movies })//data coming back as from the response of the web server
                 }//response method
             )
             .catch((error) => {

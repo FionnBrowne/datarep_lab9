@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export class Create extends React.Component {
 
@@ -37,6 +38,19 @@ export class Create extends React.Component {
     onSubmit(e) {
         e.preventDefault();//prevent from being called multiple times
         alert("Movie: " + this.state.Title + " Year: " + this.state.Year + " Poster: " + this.state.Poster);//shows if button works
+
+        const newMovie = {
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
+        }//passing objects up as lowercase because server.js is looking for them in that case
+        axios.post('http://localhost:4000/api/movies', newMovie)//talks in http to send data to the server//returns promise asyncronisly
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     render() {
