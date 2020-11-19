@@ -17,7 +17,7 @@ export class Read extends React.Component {
         axios.get('http://localhost:4000/api/movies')//asynchronous by using a promise //now gets data from new api
             .then(
                 (response) => {
-                    this.setState({ movies: response.data.movies })//data coming back as from the response of the web server
+                    this.setState({ movies: response.data })//data coming back as from the response of the web server
                 }//response method
             )
             .catch((error) => {
