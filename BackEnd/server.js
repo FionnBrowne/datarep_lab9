@@ -86,7 +86,17 @@ app.get('/api/movies/:id', (req, res) => {
         res.json(data);
     })
 })
-
+//========================================================================================================
+//Delete
+//listen for http request to delete
+app.delete('/api/movies/:id', (req, res) => {//gets id from url
+    console.log("Delete Movie: " + req.params.id);
+    //interact with movie model find id and then delete
+    MovieModel.findByIdAndDelete(req, res.id, (err, data) => {//matches id get passed up
+        res.send(data);
+    })
+})
+//========================================================================================================
 
 app.post('/api/movies', (req, res) => {//method loads data from the server using a HTTP POST request.
     console.log('Movie Recieved!');
