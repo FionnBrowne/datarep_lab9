@@ -78,6 +78,16 @@ app.get('/api/movies', (req, res) => {
     // });
 
 })
+
+app.put('/api/movies/id:', (req, res) => {
+    console.log("Update movie: " + req.params.id);
+    console.log(req.body);
+
+    MovieModel.findByIdAndUpdate(request.params.id, req.body, { new: true },//interact with database// then update entire document in 3 fields
+        (err, data) => {
+            res.send(data);
+        })//send back the data
+})
 app.get('/api/movies/:id', (req, res) => {
     console.log(req.params.id);//logs to console
 
@@ -86,6 +96,8 @@ app.get('/api/movies/:id', (req, res) => {
         res.json(data);
     })
 })
+
+
 //========================================================================================================
 //Delete
 //listen for http request to delete
